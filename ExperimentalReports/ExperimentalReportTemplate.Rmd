@@ -1,0 +1,128 @@
+---
+output: 
+  pdf_document:
+    keep_tex: yes
+    fig_caption: yes
+    number_sections: yes
+    citation_package: natbib
+    template: C:/Users/meglarse/Desktop/FORMBLOOM/ExperimentalReports/doc-setup/svm-latex-ms-mod.tex
+title: Experiment Title
+subtitle: Subtitle
+author: 
+- name: Your Name
+  affiliation: your affliation
+abstract: "Experimental overview. This section should be no longer than 300 words."
+fontsize: 11pt
+fontfamily: mathpazo
+bibliography: C:/Users/meglarse/Desktop/FORMBLOOM/ExperimentalReports/doc-setup/ExperimentalReport-bib.bib
+biblio-style: apsr
+csl: C:/Users/meglarse/Desktop/FORMBLOOM/ExperimentalReports/doc-setup/environmental-science-and-technology.csl
+---
+<Information in these brackets are used for annotating the RMarkdown file. They will not appear in the final version of the PDF document>
+<Be sure to change the file path in the above section to match your file directory otherwise this will not work!>
+
+<Setup the global options for the R chunks in your document>
+```{r setup, include=FALSE}
+
+setwd("C:/Users/meglarse/Desktop/FORMBLOOM/ExperimentalReports/")
+
+# Install packages for the document
+
+## install.packages("ggplot2")
+require(ggplot2)
+
+# Package options
+
+# add that ggplot theme in here!
+
+```
+
+<Setup the front matter for your document depending on the length/type of report you're wanting to prepare. Simply delete the sections you don't want.>
+
+<Add the text for each of your sections. Check out the [RMarkdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) and [Markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists) for more information about text formatting.>
+
+# Summary of Major Results
+
+1. Summarize the major results from your experiment. You can use the autoreferencing functionality of RMarkdown to make reference to figures and tables in your document like this: See \autoref{fig1} for more information. 
+
+\newpage
+
+# Experimental Information
+
+Always throughly think through your experiment to determine what hypotheses you're testing, the data you need to collect, and how you will analyze that data after its collected.
+Sometimes, there will be instances where you need to perform other statistics or visualizations after you start looking at the data. This is what we call exploratory data analysis and may lead to other interpretations and experiments.
+
+## questions, hypotheses and rationale
+### Question 1.
+   + **H0**:
+   + **H1**:
+
+**Rationale**. 
+
+We can create citations like this: 
+
+  - To suppress the author's name: @smith2017a had some really great things to say.
+  - Or to include the full citation: One of his other articles completely contradicted the first [@smith2017b]
+  
+<To create a formatted citation, check out this website: http://truben.no/latex/bibtex/). You can use a citation manager such as Mendeley then export those into a bibtex format for the use of your experimental reports. This document will automatically format those citations included in your '.bib' file in the doc-setup folder.>
+
+### Question 2.
+   + **H0**:
+   + **H1**:
+
+**Rationale**. 
+
+\newpage
+
+# Methods
+
+Use this space to provide information related to the protocol, protocol number (you can even add a link to the protocol in the GoogleDrive folder) or modifications to the protocol
+
+# Results
+
+To generate your results section, I would strongly recommend sections for data cleanup, calculations, data reduction, visualization, and statistics.
+
+<Data cleanup>
+<Calculations>
+<Data Reduction>
+
+## Data summary
+
+<Visualization>
+
+## Summarize result 1 in a single sentence.
+The frequency of algal blooms across the state of Nebraska increased by X\% between 2005 - 2015 (\autoref{fig1}).
+
+<Figure 1>
+```{r fig1, fig.cap="A descriptive title about the frequency. \\label{fig1}", echo = FALSE}
+dat <- data.frame(seq(1,10,0.5), seq(1,10,0.5))
+ggplot(data = dat, aes(x = dat[,1], y = dat[,2])) +
+  geom_point(size = 2, color = "red") +
+  xlab("Axis 1") +
+  ylab("Axis 2") +
+  theme_bw()
+
+```
+
+## Summarize result 2 in a single sentence.
+Some great text about this!
+
+<Figure 2>
+
+```{r fig2, fig.cap="A descriptive title about the intensity."}
+```
+
+<Statistics>
+
+# Experimental Summary
+
+# Next Steps
+
+\newpage
+\tableofcontents <creates a table of contents for your document>
+\newpage
+\listoftables <creates a list of all tables>
+\newpage
+\listoffigures <creates a list of all figures>
+\newpage
+
